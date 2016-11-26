@@ -1,4 +1,4 @@
-package triac;
+package com.triac;
 
 
 import javafx.application.Application;

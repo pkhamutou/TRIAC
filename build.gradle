@@ -13,11 +13,14 @@ apply plugin: 'java'
 apply plugin: 'idea'
 
 version = "1.0.0"
-group = "triac"
+group = "com.triac"
 
 jar {
-    baseName = 'triac-app'
+    baseName = 'triac'
     version = ""
+    manifest {
+        attributes 'Main-Class': 'com.triac.Main'
+    }
 }
 
 // In this section you declare where to find the dependencies of your project
