@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.triac.Controller">
+   <children>
+      <MenuBar VBox.vgrow="NEVER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane VBox.vgrow="ALWAYS">
+         <children>
+            <HBox layoutX="200.0" layoutY="98.0" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane prefHeight="571.0" prefWidth="343.0" HBox.hgrow="NEVER">
+                     <children>
+                        <VBox layoutX="65.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="48.0" prefWidth="230.0" VBox.vgrow="NEVER">
+                                 <children>
+                                    <HBox layoutX="84.0" layoutY="12.0" spacing="20.0">
+                                       <children>
+                                          <Button fx:id="loadDir" layoutX="84.0" layoutY="12.0" mnemonicParsing="false" onAction="#loadDir" text="Load Directory" />
+                                          <Button fx:id="loadImages" layoutX="195.0" layoutY="12.0" mnemonicParsing="false" onAction="#loadImages" text="Load Images" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ListView fx:id="imageList" editable="true" layoutX="-13.0" layoutY="62.0" prefHeight="323.0" prefWidth="254.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="371.0" prefWidth="279.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox layoutX="107.0" layoutY="86.0" prefHeight="371.0" prefWidth="366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="334.0" prefWidth="366.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ImageView fx:id="generatedImage" fitHeight="150.0" fitWidth="200.0" layoutX="75.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="88.0">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="56.0">
+                                 <children>
+                                    <HBox alignment="TOP_RIGHT" layoutX="208.0" layoutY="11.0" spacing="20.0" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="14.0">
+                                       <children>
+                                          <Button layoutX="207.0" layoutY="7.0" mnemonicParsing="false" onAction="#generateImage" text="Generate" HBox.hgrow="NEVER" />
+                                          <Button layoutX="281.0" layoutY="7.0" mnemonicParsing="false" onAction="#processImage" text="Process" HBox.hgrow="NEVER" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
