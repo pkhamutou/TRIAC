@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -101,5 +102,21 @@ public class Controller implements Initializable {
 
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"));
 
+        imageList.setCellFactory(v -> new ImageCell());
+
+    }
+
+    static private class ImageCell extends ListCell<File> {
+        @Override
+        protected void updateItem(File item, boolean empty) {
+            super.updateItem(item, empty);
+            if (item != null) {
+                String path = item.toURI().toString();
+                setText(path);
+                Image image = new Image(path, 40, 40, true, true);
+                setGraphic(new ImageView(image));
+            }
+
+        }
     }
 }
