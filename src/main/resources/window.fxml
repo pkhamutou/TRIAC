@@ -37,10 +37,11 @@
                            <children>
                               <AnchorPane prefHeight="48.0" prefWidth="230.0" VBox.vgrow="NEVER">
                                  <children>
-                                    <HBox layoutX="49.0" layoutY="12.0" spacing="20.0">
+                                    <HBox layoutX="14.0" layoutY="12.0" spacing="20.0">
                                        <children>
                                           <Button fx:id="loadDir" layoutX="84.0" layoutY="12.0" mnemonicParsing="false" onAction="#loadDir" text="Load Directory" />
                                           <Button fx:id="loadImages" layoutX="195.0" layoutY="12.0" mnemonicParsing="false" onAction="#loadImages" text="Load Image(s)" />
+                                          <Button mnemonicParsing="false" onAction="#removeSelected" text="Remove" />
                                        </children>
                                     </HBox>
                                  </children>

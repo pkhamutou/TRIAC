@@ -5,10 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -63,8 +63,6 @@ public class Controller implements Initializable {
 
     public void generateImage() {
 
-
-
         ObservableList<File> list = imageList.getItems();
 
         if (!list.isEmpty()) {
@@ -99,6 +97,11 @@ public class Controller implements Initializable {
 
     }
 
+    public void removeSelected() {
+        imageList.getItems().removeAll(imageList.getSelectionModel().getSelectedItems());
+        imageList.refresh();
+    }
+
     private static File[] filterPng(File[] files) {
         return Arrays.stream(files).filter(f -> f.getName().endsWith(".png")).toArray(File[]::new);
     }
@@ -106,14 +109,13 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
         fileChooser = new FileChooser();
         directoryChooser = new DirectoryChooser();
 
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"));
 
         imageList.setCellFactory(v -> new ImageCell());
-
+        imageList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     static private class ImageCell extends ListCell<File> {
@@ -125,8 +127,10 @@ public class Controller implements Initializable {
                 setText(path);
                 Image image = new Image(path, 40, 40, true, true);
                 setGraphic(new ImageView(image));
+            } else {
+                setText(null);
+                setGraphic(null);
             }
-
         }
     }
 }
