@@ -11,8 +11,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -39,6 +38,9 @@ public class Controller implements Initializable {
     @FXML
     ImageView generatedImage; // the generated image
 
+    @FXML
+    AnchorPane imagePlane;
+
     private FileChooser fileChooser;
     private DirectoryChooser directoryChooser;
 
@@ -61,18 +63,26 @@ public class Controller implements Initializable {
 
     public void generateImage() {
 
+
+
         ObservableList<File> list = imageList.getItems();
 
         if (!list.isEmpty()) {
             //pseudo code
             int index = new Random().nextInt(list.size());
-            generatedImage.setImage(new Image(list.get(index).toURI().toString()));
+            //generatedImage.setImage(new Image(list.get(index).toURI().toString()));
+            BackgroundImage bi = new BackgroundImage(new Image(list.get(index).toURI().toString()),
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.CENTER,
+                    BackgroundSize.DEFAULT);
+            imagePlane.setBackground(new Background(bi));
         }
     }
 
     public void processImage() {
 
-        if (generatedImage.getImage() != null) {
+        if (generatedImage.getImage() != null || imagePlane.getBackground() != null) {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("OMG, IT WORKS");
